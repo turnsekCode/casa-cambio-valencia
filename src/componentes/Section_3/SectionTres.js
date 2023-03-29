@@ -12,8 +12,8 @@ const SectionTres = () => {
           </h2>
           <p>
             <span>
-              En Quickgold tenemos actualmente 5 casas de cambio en la capital
-              de España para que puedas cambiar moneda extrajera fácil y rápido.
+              En Quickgold tenemos actualmente 5 casas de cambio para que puedas
+              cambiar moneda extrajera fácil y rápido.
             </span>
             Tenemos más de 30 divisas disponibles para ofrecerte el mejor
             servicio.
