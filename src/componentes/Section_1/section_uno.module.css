@@ -87,6 +87,8 @@
 }
 .botones a:nth-child(2){
    display: none;
+   padding: 12px 0;
+   text-align: center;
 }
 .botones a svg{
     margin-right: 10px;

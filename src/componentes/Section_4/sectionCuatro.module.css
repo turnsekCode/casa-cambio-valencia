@@ -34,7 +34,6 @@ width: 100%;
 .linea {
     position: relative;
     display: inline-block;
-    margin-left: 5px;
 }
 .linea:before {
     content: '';
@@ -84,7 +83,6 @@ width: 100%;
     .linea {
         position: relative;
         display: inline-block;
-        margin-left: 5px;
     }
 
     .linea:before {

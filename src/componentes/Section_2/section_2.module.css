@@ -5,7 +5,7 @@
     justify-content: center;
     background-color: #0692D0;
     width: 100%;
-    height: 663px;
+    height: 743px;
     border-radius: 8px;
     margin-top: 55px;
 }
@@ -30,7 +30,7 @@
 .contenedorInfo p {
     font-weight: 400;
     font-size: 14px;
-    line-height: 12px;
+    line-height: 17px;
     text-align: center;
     color: #FFFFFF;
 }
@@ -67,7 +67,7 @@
         margin-top: 55px;
         display: flex;
         gap: 60px;
-        background: url(https://quickgold.es/degradadoMadrid.png) no-repeat;
+        background: url(https://quickgold.es/degradadoValencia.png) no-repeat;
         background-blend-mode: multiply;
         background-position: left;
         background-size: 50%;
@@ -98,7 +98,7 @@
         .contenedorInfo p {
             font-weight: 400;
             font-size: 14px;
-            line-height: 12px;
+            line-height: 17px;
             text-align: center;
             color: #FFFFFF;
         }

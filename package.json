@@ -1,8 +1,8 @@
 {
-  "name": "casa-cambio-madrid",
+  "name": "casa-cambio-valencia",
   "version": "0.1.0",
   "private": true,
-  "home": "quickgold.es/casa-cambio-madrid",
+  "home": "quickgold.es/casa-cambio-valencia",
   "scripts": {
     "dev": "node server.js",
     "build": "next build",

@@ -48,10 +48,10 @@ const Comprar = ({ dataReverse }) => {
     <div className={styles.bloqueDer}>
       <div className={styles.bloqueDivHabituales}>
         <div className={styles.bloqueTituloSuperior}>
-          <h6>
+          <h3>
             Conversor <span></span> de divisa
-          </h6>
-          <p className={styles.tituloDivisaHabitual}>Divisas más habituales</p>
+          </h3>
+          <p className={styles.tituloDivisaHabitual}>Divisas más habituales:</p>
         </div>
 
         <div className={styles.divisasHabituales}>
@@ -78,6 +78,7 @@ const Comprar = ({ dataReverse }) => {
                 }}
                 data-acronimo={dataReverse[1].Productos[0].Acronimo}
                 data-precio={dataReverse[1].Productos[0].Precio}
+                alt={dataReverse[1].Productos[0].Acronimo}
               />
               <span
                 onClick={(e) => {
@@ -141,6 +142,7 @@ const Comprar = ({ dataReverse }) => {
                 }}
                 data-acronimo={dataReverse[0].Productos[0].Acronimo}
                 data-precio={dataReverse[0].Productos[0].Precio}
+                alt={dataReverse[0].Productos[0].Acronimo}
               />
               <span
                 onClick={(e) => {
@@ -224,6 +226,7 @@ const Comprar = ({ dataReverse }) => {
                       src={`/${data?.Productos[0].Acronimo}.png`}
                       data-acronimo={data?.Productos[0].Acronimo}
                       data-precio={data?.Productos[0].Precio}
+                      alt={data?.Productos[0].Acronimo}
                     />
                   </div>
                   <div className={styles.moneda}>
@@ -351,7 +354,7 @@ const Comprar = ({ dataReverse }) => {
           )}
         </div>
       </div>
-      <a className={styles.botonLlamarTienda} href="tel:">
+      <a className={styles.botonLlamarTienda} href="tel:900 373 629">
         LLAMAR A TIENDA
       </a>
     </div>

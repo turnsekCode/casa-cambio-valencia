@@ -75,7 +75,7 @@ const Mapa = ({ markers }) => {
       <div className={styles.contenedorbloqueIzq}>
         <div className={styles.bloqueIzq}>
           <h2>
-            Casas de cambio en <span className={styles.linea}>Madrid</span>
+            Casas de cambio en <span className={styles.linea}>Valencia</span>
           </h2>
           <p>
             Tiendas Quickgold: <span>{numeroDeTiendas.id}</span>

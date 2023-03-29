@@ -11,12 +11,12 @@ const Section_uno = () => {
     <section className={styles.contenedorSectionUno}>
       <div className={styles.bloqueIzq}>
         <h1>
-          Casas de cambio en <span className={styles.linea}>Madrid</span>
+          Casas de cambio en <span className={styles.linea}>Valencia</span>
         </h1>
         <p>
-          En nuestra casas de cambio en Madrid puedes cambiar más de 30 monedas
-          extranjeras al momento y sin comisiones. ¿Necesitas cambiar dólares
-          por euros o cualquier otra moneda extranjera? Ven a Quickgold.
+          En nuestras casas de cambio en Valencia puedes cambiar más de 30
+          monedas extranjeras al momento y sin comisiones. ¿Necesitas cambiar
+          dólares por euros o cualquier otra moneda extranjera? Ven a Quickgold.
         </p>
         <div className={styles.botones}>
           <Link
@@ -26,29 +26,29 @@ const Section_uno = () => {
             spy={true}
             duration={500}
             title="texto"
-            passive="true"
+            passive={true}
           >
             <LocationOnOutlinedIcon />
             encuentra tu tienda
           </Link>
           <a href="tel:900 373 629" title="Teléfono">
-            llamar a 900 373 629
+            llama gratis al 900 373 629
           </a>
         </div>
       </div>
       <div className={styles.bloqueDer}>
         {width <= 610 ? (
           <img
-            src="/madrid_mobil.webp"
-            alt="Quickgold Madrid"
+            src="/valencia_mobil.webp"
+            alt="Casas de cambio Valencia"
             className={styles.madridMobil}
             width={290}
             height={220}
           />
         ) : (
           <img
-            src="/madrid.webp"
-            alt="Quickgold Madrid"
+            src="/valencia.webp"
+            alt="Casas de cambio Valencia"
             className={styles.vector}
             width={480}
             height={364}

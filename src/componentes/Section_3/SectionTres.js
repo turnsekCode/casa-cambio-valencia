@@ -8,12 +8,12 @@ const SectionTres = () => {
         <div className={styles.bloqueIzq}>
           <h2>
             ¿Necesitas una oficina de cambio en
-            <span className={styles.linea}> Madrid?</span>
+            <span className={styles.linea}> Valencia?</span>
           </h2>
           <p>
             <span>
-              En Quickgold tenemos actualmente 3 casas de cambio en la ciudad
-              condal para que puedas cambiar moneda extrajera fácil y rápido.
+              En Quickgold tenemos actualmente 5 casas de cambio en la capital
+              de España para que puedas cambiar moneda extrajera fácil y rápido.
             </span>
             Tenemos más de 30 divisas disponibles para ofrecerte el mejor
             servicio.
@@ -29,7 +29,7 @@ const SectionTres = () => {
         </div>
       </div>
       <h1>
-        Cambiar divisa en <span className={styles.linea}>Madrid</span> es muy
+        Cambiar divisa en <span className={styles.linea}>Valencia</span> es muy
         fácil
       </h1>
       <div className={styles.contenedorInfoTres}>

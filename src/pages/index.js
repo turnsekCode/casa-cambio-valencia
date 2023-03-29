@@ -24,10 +24,10 @@ export default function Home({
   return (
     <>
       <Head>
-        <title>Casas de Cambio en Madrid | Cambio de Divisas Madrid</title>
+        <title>Casas de Cambio en Valencia | Cambio de Divisas Valencia</title>
         <meta
           name="description"
-          content="Casas de cambio en Madrid. Cambia dólares a euros en nuestras oficinas de cambio quickgold. Cambio de moneda extranjera al momento y sin comisiones. "
+          content="Casas de cambio en Valencia. Cambia dólares a euros en nuestras oficinas de cambio quickgold. Cambio de moneda extranjera al momento y sin comisiones. "
         />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.png" />
@@ -49,7 +49,7 @@ export default function Home({
     </>
   );
 }
-const idTienda = "madrid";
+const idTienda = "valencia";
 //const idWp = "13848";
 export async function getStaticProps() {
   /*const response = await fetch(

@@ -43,10 +43,10 @@ const Comprar = ({ dataReverseVenta }) => {
     <div className={styles.bloqueDer}>
       <div className={styles.bloqueDivHabituales}>
         <div className={styles.bloqueTituloSuperior}>
-          <h6>
+          <h3>
             Conversor <span></span> de divisa
-          </h6>
-          <p className={styles.tituloDivisaHabitual}>Divisas más habituales</p>
+          </h3>
+          <p className={styles.tituloDivisaHabitual}>Divisas más habituales:</p>
         </div>
 
         <div className={styles.divisasHabituales}>
@@ -68,6 +68,7 @@ const Comprar = ({ dataReverseVenta }) => {
             >
               <img
                 src="/banderaUSA.png"
+                alt={dataReverseVenta[1].Productos[0].Acronimo}
                 onClick={(e) => {
                   captureHabitual(e);
                 }}
@@ -131,6 +132,7 @@ const Comprar = ({ dataReverseVenta }) => {
             >
               <img
                 src="/banderaGBP.png"
+                alt={dataReverseVenta[0].Productos[0].Acronimo}
                 onClick={(e) => {
                   captureHabitual(e);
                 }}
@@ -219,6 +221,7 @@ const Comprar = ({ dataReverseVenta }) => {
                       src={`/${data?.Productos[0].Acronimo}.png`}
                       data-acronimo={data?.Productos[0].Acronimo}
                       data-precio={data?.Productos[0].Precio}
+                      alt={data?.Productos[0].Acronimo}
                     />
                   </div>
                   <div className={styles.moneda}>
@@ -343,7 +346,7 @@ const Comprar = ({ dataReverseVenta }) => {
           )}
         </div>
       </div>
-      <a className={styles.botonLlamarTienda} href="tel:">
+      <a className={styles.botonLlamarTienda} href="tel:900 373 629">
         LLAMAR A TIENDA
       </a>
     </div>
