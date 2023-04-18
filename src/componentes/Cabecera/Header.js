@@ -71,15 +71,12 @@ const Header = ({ menu_list }) => {
           </div>
         </div>
       </nav>
-      {width <= 1190 ? (
-        <MenuMobil
-          menu_list={menu_list}
-          menuAbieto={menuAbieto}
-          setMenuAbierto={setMenuAbierto}
-        />
-      ) : (
-        <MenuOrdenador menu_list={menu_list} />
-      )}
+      <MenuMobil
+        menu_list={menu_list}
+        menuAbieto={menuAbieto}
+        setMenuAbierto={setMenuAbierto}
+      />
+      <MenuOrdenador menu_list={menu_list} />
     </header>
   );
 };

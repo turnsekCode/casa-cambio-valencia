@@ -12,7 +12,7 @@ export default function Layout({ children, menu_list }) {
       <main className={styles.contenedor}>
         <Header menu_list={menu_list} />
         {children}
-        {width <= 1190 ? <FooterMobil /> : <Footer />}
+        <FooterMobil /> <Footer />
         <BotonLamarFijo />
       </main>
     </>

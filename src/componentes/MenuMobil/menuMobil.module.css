@@ -1,15 +1,16 @@
-.contenedorMenuMobil{
+.contenedorMenuMobil {
     display: flex;
     background: transparent;
     position: fixed;
     top: 0;
-    right: -1300px;
+    right: -2000px;
     width: 100%;
     overflow: scroll;
     background: rgba(0, 0, 0, 0.3);
     transition: 0.3s ease-in-out;
 }
-.closeBoton{
+
+.closeBoton {
     display: flex;
     justify-content: flex-end;
     cursor: pointer;
@@ -19,11 +20,13 @@
     width: 80%;
     padding: 30px 20px;
 }
-.closeBoton svg{
+
+.closeBoton svg {
     font-size: 43px;
     color: #FFFFFF;
 }
-.menuMobil{
+
+.menuMobil {
     width: 80%;
     height: 103vh;
     background: #0692D0;
@@ -31,7 +34,8 @@
     text-transform: uppercase;
     margin-right: -330px;
 }
-.listasMenu a{
+
+.listasMenu a {
     font-weight: 600;
     font-size: 18px;
     line-height: 36px;
@@ -41,7 +45,8 @@
     justify-content: flex-end;
     padding-right: 15px;
 }
-.servicios{
+
+.servicios {
     font-weight: 600;
     font-size: 18px;
     line-height: 36px;
@@ -53,7 +58,8 @@
     text-transform: uppercase;
     padding-right: 15px;
 }
-.servicios a{
+
+.servicios a {
     font-weight: 600;
     font-size: 18px;
     line-height: 36px;
@@ -65,11 +71,13 @@
     text-transform: uppercase;
 
 }
-.servicios svg{
+
+.servicios svg {
     font-size: 36px;
     margin: 0 -10px 0 6px;
 }
-.subServicios{
+
+.subServicios {
     background: #213E58;
     width: 100%;
     height: auto;
@@ -79,7 +87,8 @@
     transition: height .3s ease;
     overflow-x: scroll;
 }
-.subServicios a{
+
+.subServicios a {
     padding-right: 30px;
     font-weight: 700;
     font-size: 14px;
@@ -87,27 +96,33 @@
     text-align: right;
     text-transform: uppercase;
 }
+
 .subMenuActivoServicios {
     height: 150px;
 }
-.subMenuActivo{
+
+.subMenuActivo {
     height: 800px;
     overflow-x: hidden;
 }
-.menuActive{
+
+.menuActive {
     margin-left: 0;
 }
+
 .menuActive1 {
     right: 0;
 }
-.contenedorListasMenu{
+
+.contenedorListasMenu {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     height: 70vh;
     margin-top: 110px;
 }
-.menuInferiorMobil{
+
+.menuInferiorMobil {
     background: #0692D0;
     border-top: 3px solid #fff;
     padding: 10px 15px 30px 0;
@@ -115,13 +130,15 @@
     justify-content: flex-end;
     padding-right: 15px;
 }
-.menuInferiorMobil ul li{
+
+.menuInferiorMobil ul li {
     font-weight: 700;
     font-size: 14px;
     line-height: 36px;
     text-align: right;
     color: #FFFFFF;
 }
-.background{
+
+.background {
     width: 20%;
 }
