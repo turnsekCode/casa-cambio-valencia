@@ -9,7 +9,7 @@ import SectionTres from "@/componentes/Section_3/SectionTres";
 import SectionCuatro from "@/componentes/Section_4/SectionCuatro";
 //import Mapa from "@/componentes/Mapa/Mapa";
 import Layout from "@/componentes/Layout/Layout";
-//import React, { useState, useEffect } from "react";
+import { useInView } from "react-intersection-observer";
 
 const DynamicMapa = dynamic(() =>
   import(/*componente del mapa script*/ "../componentes/Mapa/Mapa.js")
@@ -21,6 +21,7 @@ export default function Home({
   dataReverseVenta,
   dataReverse,
 }) {
+  const { ref: myRef, inView, entry } = useInView();
   return (
     <>
       <Head>
@@ -42,7 +43,13 @@ export default function Home({
           />
           <SectionTres />
           <SectionCuatro />
-          <DynamicMapa markers={markers} />
+          <div
+            id="contenedorMapa"
+            className={styles.contenedorMapaVisible}
+            ref={myRef}
+          >
+            {inView ? <DynamicMapa markers={markers} /> : null}
+          </div>
           {/*<Mapa markers={markers} />*/}
         </div>
       </Layout>
@@ -69,8 +76,19 @@ export async function getStaticProps() {
     `https://quickgold.es/archivos-cache/Fixing${idTienda}.txt`
   );
   const datos = await data.json();
-  const dataReverse = [...datos?.result?.Tarifas?.Divisas_Compra].reverse();
-  const dataReverseVenta = [...datos?.result?.Tarifas?.Divisas_Venta].reverse();
+  const dataReverse1 = [...datos?.result?.Tarifas?.Divisas_Compra].reverse();
+  const dataReverseVenta1 = [
+    ...datos?.result?.Tarifas?.Divisas_Venta,
+  ].reverse();
+  const dataReverse = dataReverse1.filter(
+    (currency) =>
+      currency.Name !== "RUB" &&
+      currency.Name !== "HRK" &&
+      currency.Name !== "DKK"
+  );
+  const dataReverseVenta = dataReverseVenta1.filter(
+    (currency) => currency.Name !== "HRK"
+  );
   // Pass data to the page via props
   return {
     props: {

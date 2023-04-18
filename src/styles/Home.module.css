@@ -3,6 +3,9 @@
   max-width: 1060px;
   margin: 0 auto;
 }
+.contenedorMapaVisible {
+  height: 1012px;
+}
 
 @media (min-width: 610px) {
   .main {
@@ -17,6 +20,9 @@
     padding-top: 135px;
     max-width: 1060px;
     margin: 0 auto;
+  }
+  .contenedorMapaVisible {
+    height: 600px;
   }
 }
 
