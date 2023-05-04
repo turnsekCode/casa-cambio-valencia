@@ -110,7 +110,7 @@ const Mapa = ({ markers }) => {
               </Link>
               <div className={styles.tienda}>
                 <p>{marker.direccion}</p>
-                <p>Telefono: {marker.telefono}</p>
+                <p>Teléfono: {marker.telefono}</p>
                 <Link
                   to="contenedorMapa"
                   smooth={true}
