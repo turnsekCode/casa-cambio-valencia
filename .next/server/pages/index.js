@@ -1379,7 +1379,7 @@ const Section_uno = ()=>{
                                 spy: true,
                                 duration: 500,
                                 title: "texto",
-                                passive: true,
+                                passive: "true",
                                 children: [
                                     /*#__PURE__*/ jsx_runtime_.jsx((LocationOnOutlined_default()), {}),
                                     "encuentra tu tienda"
@@ -1452,17 +1452,23 @@ var ImportExport_default = /*#__PURE__*/__webpack_require__.n(ImportExport_names
 
 
 //import { useFetchData } from "../../utilities/DataTiendas";
-const Comprar = ({ dataReverse  })=>{
+const Comprar = ()=>{
+    const nombreCiudad = "valencia";
+    const [data, setData] = (0,external_react_.useState)([]);
+    const [loading, setLoading] = (0,external_react_.useState)(null);
     (0,external_react_.useEffect)(()=>{
-        // This forces a rerender, so the date is rendered
-        // the second time but not the first
-        dataReverse;
+        fetch(`https://quickgold.es/archivos-cache/Fixing${nombreCiudad}.txt`, {
+            cache: "no-cache"
+        }).then((response)=>response.json()).then((response)=>{
+            setData(response?.result?.Tarifas?.Divisas_Compra.reverse());
+            setLoading(true);
+        });
     }, []);
     //const { data, loading } = useFetchData();
     //const dataCompras = datos?.result?.Tarifas?.Divisas_Compra;
     //const dataReverse = dataCompras?.reverse();
-    const precioLibra = dataReverse[0]?.Productos[0].Precio / 1000;
-    const precioDolar = dataReverse[1]?.Productos[0].Precio / 1000;
+    const precioLibra = data[0]?.Productos[0].Precio / 1000;
+    const precioDolar = data[1]?.Productos[0].Precio / 1000;
     const [valorMoneda, setValorMoneda] = (0,external_react_.useState)("0");
     const [DataAcronimo, setAcronimo] = (0,external_react_.useState)("");
     //const [DataNombre, setDataNombre] = useState("");
@@ -1521,8 +1527,8 @@ const Comprar = ({ dataReverse  })=>{
                                     captureHabitual(e);
                                     setSelect(false);
                                 },
-                                "data-acronimo": dataReverse[1].Productos[0].Acronimo,
-                                "data-precio": dataReverse[1].Productos[0].Precio,
+                                "data-acronimo": data[1]?.Productos[0]?.Acronimo,
+                                "data-precio": data[1]?.Productos[0]?.Precio,
                                 children: [
                                     /*#__PURE__*/ (0,jsx_runtime_.jsxs)("div", {
                                         className: (estilosConversor_module_default()).imgMoneda,
@@ -1530,8 +1536,8 @@ const Comprar = ({ dataReverse  })=>{
                                             captureHabitual(e);
                                             setSelect(false);
                                         },
-                                        "data-acronimo": dataReverse[1].Productos[0].Acronimo,
-                                        "data-precio": dataReverse[1].Productos[0].Precio,
+                                        "data-acronimo": data[1]?.Productos[0]?.Acronimo,
+                                        "data-precio": data[1]?.Productos[0]?.Precio,
                                         children: [
                                             /*#__PURE__*/ jsx_runtime_.jsx("img", {
                                                 src: "/banderaUSA.png",
@@ -1539,17 +1545,17 @@ const Comprar = ({ dataReverse  })=>{
                                                     captureHabitual(e);
                                                     setSelect(false);
                                                 },
-                                                "data-acronimo": dataReverse[1].Productos[0].Acronimo,
-                                                "data-precio": dataReverse[1].Productos[0].Precio,
-                                                alt: dataReverse[1].Productos[0].Acronimo
+                                                "data-acronimo": data[1]?.Productos[0]?.Acronimo,
+                                                "data-precio": data[1]?.Productos[0]?.Precio,
+                                                alt: data[1]?.Productos[0]?.Acronimo
                                             }),
                                             /*#__PURE__*/ jsx_runtime_.jsx("span", {
                                                 onClick: (e)=>{
                                                     captureHabitual(e);
                                                     setSelect(false);
                                                 },
-                                                "data-acronimo": dataReverse[1].Productos[0].Acronimo,
-                                                "data-precio": dataReverse[1].Productos[0].Precio,
+                                                "data-acronimo": data[1]?.Productos[0]?.Acronimo,
+                                                "data-precio": data[1]?.Productos[0]?.Precio,
                                                 children: "USD"
                                             })
                                         ]
@@ -1562,8 +1568,8 @@ const Comprar = ({ dataReverse  })=>{
                                                     captureHabitual(e);
                                                     setSelect(false);
                                                 },
-                                                "data-acronimo": dataReverse[1].Productos[0].Acronimo,
-                                                "data-precio": dataReverse[1].Productos[0].Precio,
+                                                "data-acronimo": data[1]?.Productos[0]?.Acronimo,
+                                                "data-precio": data[1]?.Productos[0]?.Precio,
                                                 children: "D\xf3lar USA"
                                             }),
                                             /*#__PURE__*/ jsx_runtime_.jsx("p", {
@@ -1571,16 +1577,19 @@ const Comprar = ({ dataReverse  })=>{
                                                     captureHabitual(e);
                                                     setSelect(false);
                                                 },
-                                                "data-acronimo": dataReverse[1].Productos[0].Acronimo,
-                                                "data-precio": dataReverse[1].Productos[0].Precio,
-                                                children: /*#__PURE__*/ jsx_runtime_.jsx("span", {
+                                                "data-acronimo": data[1]?.Productos[0]?.Acronimo,
+                                                "data-precio": data[1]?.Productos[0]?.Precio,
+                                                children: /*#__PURE__*/ (0,jsx_runtime_.jsxs)("span", {
                                                     onClick: (e)=>{
                                                         captureHabitual(e);
                                                         setSelect(false);
                                                     },
-                                                    "data-acronimo": dataReverse[1].Productos[0].Acronimo,
-                                                    "data-precio": dataReverse[1].Productos[0].Precio,
-                                                    children: precioDolar.toFixed(4)
+                                                    "data-acronimo": data[1]?.Productos[0]?.Acronimo,
+                                                    "data-precio": data[1]?.Productos[0]?.Precio,
+                                                    children: [
+                                                        loading ? precioDolar.toFixed(4) : "Cargando...",
+                                                        "€"
+                                                    ]
                                                 })
                                             })
                                         ]
@@ -1593,8 +1602,8 @@ const Comprar = ({ dataReverse  })=>{
                                     captureHabitual(e);
                                     setSelect(false);
                                 },
-                                "data-acronimo": dataReverse[0].Productos[0].Acronimo,
-                                "data-precio": dataReverse[0].Productos[0].Precio,
+                                "data-acronimo": data[0]?.Productos[0]?.Acronimo,
+                                "data-precio": data[0]?.Productos[0]?.Precio,
                                 children: [
                                     /*#__PURE__*/ (0,jsx_runtime_.jsxs)("div", {
                                         className: (estilosConversor_module_default()).imgMoneda,
@@ -1602,8 +1611,8 @@ const Comprar = ({ dataReverse  })=>{
                                             captureHabitual(e);
                                             setSelect(false);
                                         },
-                                        "data-acronimo": dataReverse[0].Productos[0].Acronimo,
-                                        "data-precio": dataReverse[0].Productos[0].Precio,
+                                        "data-acronimo": data[0]?.Productos[0]?.Acronimo,
+                                        "data-precio": data[0]?.Productos[0]?.Precio,
                                         children: [
                                             /*#__PURE__*/ jsx_runtime_.jsx("img", {
                                                 src: "/banderaGBP.png",
@@ -1611,17 +1620,17 @@ const Comprar = ({ dataReverse  })=>{
                                                     captureHabitual(e);
                                                     setSelect(false);
                                                 },
-                                                "data-acronimo": dataReverse[0].Productos[0].Acronimo,
-                                                "data-precio": dataReverse[0].Productos[0].Precio,
-                                                alt: dataReverse[0].Productos[0].Acronimo
+                                                "data-acronimo": data[0]?.Productos[0]?.Acronimo,
+                                                "data-precio": data[0]?.Productos[0]?.Precio,
+                                                alt: data[0]?.Productos[0]?.Acronimo
                                             }),
                                             /*#__PURE__*/ jsx_runtime_.jsx("span", {
                                                 onClick: (e)=>{
                                                     captureHabitual(e);
                                                     setSelect(false);
                                                 },
-                                                "data-acronimo": dataReverse[0].Productos[0].Acronimo,
-                                                "data-precio": dataReverse[0].Productos[0].Precio,
+                                                "data-acronimo": data[0]?.Productos[0]?.Acronimo,
+                                                "data-precio": data[0]?.Productos[0]?.Precio,
                                                 children: "GBP"
                                             })
                                         ]
@@ -1634,8 +1643,8 @@ const Comprar = ({ dataReverse  })=>{
                                                     captureHabitual(e);
                                                     setSelect(false);
                                                 },
-                                                "data-acronimo": dataReverse[0].Productos[0].Acronimo,
-                                                "data-precio": dataReverse[0].Productos[0].Precio,
+                                                "data-acronimo": data[0]?.Productos[0]?.Acronimo,
+                                                "data-precio": data[0]?.Productos[0]?.Precio,
                                                 children: "Libra Esterlina"
                                             }),
                                             /*#__PURE__*/ jsx_runtime_.jsx("p", {
@@ -1643,16 +1652,19 @@ const Comprar = ({ dataReverse  })=>{
                                                     captureHabitual(e);
                                                     setSelect(false);
                                                 },
-                                                "data-acronimo": dataReverse[0].Productos[0].Acronimo,
-                                                "data-precio": dataReverse[0].Productos[0].Precio,
-                                                children: /*#__PURE__*/ jsx_runtime_.jsx("span", {
+                                                "data-acronimo": data[0]?.Productos[0]?.Acronimo,
+                                                "data-precio": data[0]?.Productos[0]?.Precio,
+                                                children: /*#__PURE__*/ (0,jsx_runtime_.jsxs)("span", {
                                                     onClick: (e)=>{
                                                         captureHabitual(e);
                                                         setSelect(false);
                                                     },
-                                                    "data-acronimo": dataReverse[0].Productos[0].Acronimo,
-                                                    "data-precio": dataReverse[0].Productos[0].Precio,
-                                                    children: precioLibra.toFixed(4)
+                                                    "data-acronimo": data[0]?.Productos[0]?.Acronimo,
+                                                    "data-precio": data[0]?.Productos[0]?.Precio,
+                                                    children: [
+                                                        loading ? precioLibra.toFixed(4) : "Cargando...",
+                                                        "€"
+                                                    ]
                                                 })
                                             })
                                         ]
@@ -1690,7 +1702,7 @@ const Comprar = ({ dataReverse  })=>{
                                 }),
                                 /*#__PURE__*/ jsx_runtime_.jsx("div", {
                                     className: select ? `${(estilosConversor_module_default()).select_monedas} ${(estilosConversor_module_default()).select_activo}` : `${(estilosConversor_module_default()).select_monedas}`,
-                                    children: dataReverse?.map((data, i)=>/*#__PURE__*/ (0,jsx_runtime_.jsxs)("div", {
+                                    children: data?.filter((currency)=>currency.Name !== "HRK" && currency.Name !== "DKK" && currency.Name !== "RUB" && currency.Name !== "NOK").map((data, i)=>/*#__PURE__*/ (0,jsx_runtime_.jsxs)("div", {
                                             className: (estilosConversor_module_default()).contenedor_list,
                                             "data-acronimo": data?.Productos[0].Acronimo,
                                             "data-precio": data?.Productos[0].Precio,
@@ -1865,19 +1877,30 @@ var section_2_module_default = /*#__PURE__*/__webpack_require__.n(section_2_modu
 
 
 //import { useFetchData } from "../../utilities/DataTiendas";
-const Vender_Comprar = ({ dataReverseVenta  })=>{
+const Vender_Comprar = ()=>{
+    const nombreCiudad = "valencia";
+    const [data, setData] = (0,external_react_.useState)([]);
+    const [loading, setLoading] = (0,external_react_.useState)(null);
+    (0,external_react_.useEffect)(()=>{
+        fetch(`https://quickgold.es/archivos-cache/Fixing${nombreCiudad}.txt`, {
+            cache: "no-cache"
+        }).then((response)=>response.json()).then((response)=>{
+            setData(response?.result?.Tarifas?.Divisas_Venta.reverse());
+            setLoading(true);
+        });
+    }, []);
     //const { data, loading } = useFetchData();
-    //const dataCompras = datos?.result?.Tarifas?.Divisas_Venta;
-    //const dataReverse = [...dataCompras].reverse();
+    //const dataCompras = datos?.result?.Tarifas?.Divisas_Compra;
+    //const dataReverse = dataCompras?.reverse();
+    const precioLibra = data[0]?.Productos[0].Precio / 1000;
+    const precioDolar = data[1]?.Productos[0].Precio / 1000;
+    const [valorMoneda, setValorMoneda] = (0,external_react_.useState)("0");
+    const [DataAcronimo, setAcronimo] = (0,external_react_.useState)("");
+    //const [DataNombre, setDataNombre] = useState("");
+    const [valorInput, setValorInput] = (0,external_react_.useState)("");
     const [selectDivisa, setSelectDivisa] = (0,external_react_.useState)(true);
     const [switched, setSwitched] = (0,external_react_.useState)(null);
     const [select, setSelect] = (0,external_react_.useState)(null);
-    const precioLibra = dataReverseVenta[0]?.Productos[0].Precio / 1000;
-    const precioDolar = dataReverseVenta[1]?.Productos[0].Precio / 1000;
-    const [valorMoneda, setValorMoneda] = (0,external_react_.useState)("0");
-    const [DataAcronimo, setAcronimo] = (0,external_react_.useState)(/*#__PURE__*/ jsx_runtime_.jsx((PowerInput_default()), {}));
-    //const [DataNombre, setDataNombre] = useState("");
-    const [valorInput, setValorInput] = (0,external_react_.useState)("");
     const precioDividido = valorMoneda / 1000;
     const precioDividido2 = 1 / precioDividido;
     const valorFinal = valorInput * precioDividido;
@@ -1929,8 +1952,8 @@ const Vender_Comprar = ({ dataReverseVenta  })=>{
                                     captureHabitual(e);
                                     setSelect(false);
                                 },
-                                "data-acronimo": dataReverseVenta[1].Productos[0].Acronimo,
-                                "data-precio": dataReverseVenta[1].Productos[0].Precio,
+                                "data-acronimo": data[1]?.Productos[0]?.Acronimo,
+                                "data-precio": data[1]?.Productos[0]?.Precio,
                                 children: [
                                     /*#__PURE__*/ (0,jsx_runtime_.jsxs)("div", {
                                         className: (estilosConversor_module_default()).imgMoneda,
@@ -1938,26 +1961,26 @@ const Vender_Comprar = ({ dataReverseVenta  })=>{
                                             captureHabitual(e);
                                             setSelect(false);
                                         },
-                                        "data-acronimo": dataReverseVenta[1].Productos[0].Acronimo,
-                                        "data-precio": dataReverseVenta[1].Productos[0].Precio,
+                                        "data-acronimo": data[1]?.Productos[0]?.Acronimo,
+                                        "data-precio": data[1]?.Productos[0]?.Precio,
                                         children: [
                                             /*#__PURE__*/ jsx_runtime_.jsx("img", {
                                                 src: "/banderaUSA.png",
-                                                alt: dataReverseVenta[1].Productos[0].Acronimo,
                                                 onClick: (e)=>{
                                                     captureHabitual(e);
                                                     setSelect(false);
                                                 },
-                                                "data-acronimo": dataReverseVenta[1].Productos[0].Acronimo,
-                                                "data-precio": dataReverseVenta[1].Productos[0].Precio
+                                                "data-acronimo": data[1]?.Productos[0]?.Acronimo,
+                                                "data-precio": data[1]?.Productos[0]?.Precio,
+                                                alt: data[1]?.Productos[0]?.Acronimo
                                             }),
                                             /*#__PURE__*/ jsx_runtime_.jsx("span", {
                                                 onClick: (e)=>{
                                                     captureHabitual(e);
                                                     setSelect(false);
                                                 },
-                                                "data-acronimo": dataReverseVenta[1].Productos[0].Acronimo,
-                                                "data-precio": dataReverseVenta[1].Productos[0].Precio,
+                                                "data-acronimo": data[1]?.Productos[0]?.Acronimo,
+                                                "data-precio": data[1]?.Productos[0]?.Precio,
                                                 children: "USD"
                                             })
                                         ]
@@ -1970,8 +1993,8 @@ const Vender_Comprar = ({ dataReverseVenta  })=>{
                                                     captureHabitual(e);
                                                     setSelect(false);
                                                 },
-                                                "data-acronimo": dataReverseVenta[1].Productos[0].Acronimo,
-                                                "data-precio": dataReverseVenta[1].Productos[0].Precio,
+                                                "data-acronimo": data[1]?.Productos[0]?.Acronimo,
+                                                "data-precio": data[1]?.Productos[0]?.Precio,
                                                 children: "D\xf3lar USA"
                                             }),
                                             /*#__PURE__*/ jsx_runtime_.jsx("p", {
@@ -1979,16 +2002,19 @@ const Vender_Comprar = ({ dataReverseVenta  })=>{
                                                     captureHabitual(e);
                                                     setSelect(false);
                                                 },
-                                                "data-acronimo": dataReverseVenta[1].Productos[0].Acronimo,
-                                                "data-precio": dataReverseVenta[1].Productos[0].Precio,
-                                                children: /*#__PURE__*/ jsx_runtime_.jsx("span", {
+                                                "data-acronimo": data[1]?.Productos[0]?.Acronimo,
+                                                "data-precio": data[1]?.Productos[0]?.Precio,
+                                                children: /*#__PURE__*/ (0,jsx_runtime_.jsxs)("span", {
                                                     onClick: (e)=>{
                                                         captureHabitual(e);
                                                         setSelect(false);
                                                     },
-                                                    "data-acronimo": dataReverseVenta[1].Productos[0].Acronimo,
-                                                    "data-precio": dataReverseVenta[1].Productos[0].Precio,
-                                                    children: precioDolar.toFixed(4)
+                                                    "data-acronimo": data[1]?.Productos[0]?.Acronimo,
+                                                    "data-precio": data[1]?.Productos[0]?.Precio,
+                                                    children: [
+                                                        loading ? precioDolar.toFixed(4) : "Cargando...",
+                                                        "€"
+                                                    ]
                                                 })
                                             })
                                         ]
@@ -2001,8 +2027,8 @@ const Vender_Comprar = ({ dataReverseVenta  })=>{
                                     captureHabitual(e);
                                     setSelect(false);
                                 },
-                                "data-acronimo": dataReverseVenta[0].Productos[0].Acronimo,
-                                "data-precio": dataReverseVenta[0].Productos[0].Precio,
+                                "data-acronimo": data[0]?.Productos[0]?.Acronimo,
+                                "data-precio": data[0]?.Productos[0]?.Precio,
                                 children: [
                                     /*#__PURE__*/ (0,jsx_runtime_.jsxs)("div", {
                                         className: (estilosConversor_module_default()).imgMoneda,
@@ -2010,26 +2036,26 @@ const Vender_Comprar = ({ dataReverseVenta  })=>{
                                             captureHabitual(e);
                                             setSelect(false);
                                         },
-                                        "data-acronimo": dataReverseVenta[0].Productos[0].Acronimo,
-                                        "data-precio": dataReverseVenta[0].Productos[0].Precio,
+                                        "data-acronimo": data[0]?.Productos[0]?.Acronimo,
+                                        "data-precio": data[0]?.Productos[0]?.Precio,
                                         children: [
                                             /*#__PURE__*/ jsx_runtime_.jsx("img", {
                                                 src: "/banderaGBP.png",
-                                                alt: dataReverseVenta[0].Productos[0].Acronimo,
                                                 onClick: (e)=>{
                                                     captureHabitual(e);
                                                     setSelect(false);
                                                 },
-                                                "data-acronimo": dataReverseVenta[0].Productos[0].Acronimo,
-                                                "data-precio": dataReverseVenta[0].Productos[0].Precio
+                                                "data-acronimo": data[0]?.Productos[0]?.Acronimo,
+                                                "data-precio": data[0]?.Productos[0]?.Precio,
+                                                alt: data[0]?.Productos[0]?.Acronimo
                                             }),
                                             /*#__PURE__*/ jsx_runtime_.jsx("span", {
                                                 onClick: (e)=>{
                                                     captureHabitual(e);
                                                     setSelect(false);
                                                 },
-                                                "data-acronimo": dataReverseVenta[0].Productos[0].Acronimo,
-                                                "data-precio": dataReverseVenta[0].Productos[0].Precio,
+                                                "data-acronimo": data[0]?.Productos[0]?.Acronimo,
+                                                "data-precio": data[0]?.Productos[0]?.Precio,
                                                 children: "GBP"
                                             })
                                         ]
@@ -2042,8 +2068,8 @@ const Vender_Comprar = ({ dataReverseVenta  })=>{
                                                     captureHabitual(e);
                                                     setSelect(false);
                                                 },
-                                                "data-acronimo": dataReverseVenta[0].Productos[0].Acronimo,
-                                                "data-precio": dataReverseVenta[0].Productos[0].Precio,
+                                                "data-acronimo": data[0]?.Productos[0]?.Acronimo,
+                                                "data-precio": data[0]?.Productos[0]?.Precio,
                                                 children: "Libra Esterlina"
                                             }),
                                             /*#__PURE__*/ jsx_runtime_.jsx("p", {
@@ -2051,16 +2077,19 @@ const Vender_Comprar = ({ dataReverseVenta  })=>{
                                                     captureHabitual(e);
                                                     setSelect(false);
                                                 },
-                                                "data-acronimo": dataReverseVenta[0].Productos[0].Acronimo,
-                                                "data-precio": dataReverseVenta[0].Productos[0].Precio,
-                                                children: /*#__PURE__*/ jsx_runtime_.jsx("span", {
+                                                "data-acronimo": data[0]?.Productos[0]?.Acronimo,
+                                                "data-precio": data[0]?.Productos[0]?.Precio,
+                                                children: /*#__PURE__*/ (0,jsx_runtime_.jsxs)("span", {
                                                     onClick: (e)=>{
                                                         captureHabitual(e);
                                                         setSelect(false);
                                                     },
-                                                    "data-acronimo": dataReverseVenta[0].Productos[0].Acronimo,
-                                                    "data-precio": dataReverseVenta[0].Productos[0].Precio,
-                                                    children: precioLibra.toFixed(4)
+                                                    "data-acronimo": data[0]?.Productos[0]?.Acronimo,
+                                                    "data-precio": data[0]?.Productos[0]?.Precio,
+                                                    children: [
+                                                        loading ? precioLibra.toFixed(4) : "Cargando...",
+                                                        "€"
+                                                    ]
                                                 })
                                             })
                                         ]
@@ -2098,7 +2127,7 @@ const Vender_Comprar = ({ dataReverseVenta  })=>{
                                 }),
                                 /*#__PURE__*/ jsx_runtime_.jsx("div", {
                                     className: select ? `${(estilosConversor_module_default()).select_monedas} ${(estilosConversor_module_default()).select_activo}` : `${(estilosConversor_module_default()).select_monedas}`,
-                                    children: dataReverseVenta?.map((data, i)=>/*#__PURE__*/ (0,jsx_runtime_.jsxs)("div", {
+                                    children: data?.filter((currency)=>currency.Name !== "HRK").map((data, i)=>/*#__PURE__*/ (0,jsx_runtime_.jsxs)("div", {
                                             className: (estilosConversor_module_default()).contenedor_list,
                                             "data-acronimo": data?.Productos[0].Acronimo,
                                             "data-precio": data?.Productos[0].Precio,
@@ -2156,7 +2185,7 @@ const Vender_Comprar = ({ dataReverseVenta  })=>{
                                         //id="input-izquierdo"
                                         //ref={refInput1}
                                         //onChange={calcularCambio}
-                                        value: valorFinal.toFixed(2)
+                                        value: valorFinal2.toFixed(2)
                                     }) : /*#__PURE__*/ jsx_runtime_.jsx("input", {
                                         type: "text",
                                         pattern: "[0-9]*",
@@ -2171,15 +2200,17 @@ const Vender_Comprar = ({ dataReverseVenta  })=>{
                                         onChange: (event)=>setValorInput(event.target.value)
                                     }),
                                     /*#__PURE__*/ jsx_runtime_.jsx("span", {
-                                        children: "EUR"
+                                        children: DataAcronimo
                                     })
                                 ]
                             }),
                             selectDivisa ? /*#__PURE__*/ jsx_runtime_.jsx("p", {}) : /*#__PURE__*/ (0,jsx_runtime_.jsxs)("p", {
                                 children: [
-                                    "1EUR = ",
-                                    precioDividido2.toFixed(4),
-                                    DataAcronimo
+                                    "1",
+                                    DataAcronimo,
+                                    " = ",
+                                    precioDividido.toFixed(4),
+                                    "EUR"
                                 ]
                             })
                         ]
@@ -2197,9 +2228,11 @@ const Vender_Comprar = ({ dataReverseVenta  })=>{
             /*#__PURE__*/ (0,jsx_runtime_.jsxs)("div", {
                 className: (estilosConversor_module_default()).contenedorInputInferior,
                 children: [
-                    /*#__PURE__*/ jsx_runtime_.jsx("div", {
-                        className: (estilosConversor_module_default()).monedaInferior,
+                    selectDivisa ? /*#__PURE__*/ jsx_runtime_.jsx("span", {
                         children: DataAcronimo
+                    }) : /*#__PURE__*/ jsx_runtime_.jsx("div", {
+                        className: (estilosConversor_module_default()).monedaInferior,
+                        children: "EUR"
                     }),
                     /*#__PURE__*/ (0,jsx_runtime_.jsxs)("div", {
                         className: (estilosConversor_module_default()).bloqueDerInput,
@@ -2226,24 +2259,22 @@ const Vender_Comprar = ({ dataReverseVenta  })=>{
                                         //id="input-derecho"
                                         //ref={refInput2}
                                         //onChange={calcularCambio}
-                                        value: valorFinal2.toFixed(2),
+                                        value: valorFinal.toFixed(2),
                                         readOnly: true,
                                         style: {
                                             border: "none"
                                         }
                                     }),
                                     /*#__PURE__*/ jsx_runtime_.jsx("span", {
-                                        children: DataAcronimo
+                                        children: "EUR"
                                     })
                                 ]
                             }),
                             selectDivisa ? /*#__PURE__*/ jsx_runtime_.jsx("p", {}) : /*#__PURE__*/ (0,jsx_runtime_.jsxs)("p", {
                                 children: [
-                                    "1",
-                                    DataAcronimo,
-                                    " = ",
-                                    precioDividido.toFixed(4),
-                                    "EUR"
+                                    "1EUR = ",
+                                    precioDividido2.toFixed(4),
+                                    DataAcronimo
                                 ]
                             })
                         ]
@@ -2266,7 +2297,7 @@ const Vender_Comprar = ({ dataReverseVenta  })=>{
 
 
 
-const SectionDos = ({ dataReverseVenta , dataReverse  })=>{
+const SectionDos = ()=>{
     const [switched, setSwitched] = (0,external_react_.useState)(null);
     return /*#__PURE__*/ jsx_runtime_.jsx("section", {
         className: (section_2_module_default()).contendorSectionDos,
@@ -2318,11 +2349,7 @@ const SectionDos = ({ dataReverseVenta , dataReverse  })=>{
                         })
                     ]
                 }),
-                switched ? /*#__PURE__*/ jsx_runtime_.jsx(Vender, {
-                    dataReverseVenta: dataReverseVenta
-                }) : /*#__PURE__*/ jsx_runtime_.jsx(ConversorDivisa_Comprar, {
-                    dataReverse: dataReverse
-                })
+                switched ? /*#__PURE__*/ jsx_runtime_.jsx(Vender, {}) : /*#__PURE__*/ jsx_runtime_.jsx(ConversorDivisa_Comprar, {})
             ]
         })
     });
@@ -2551,7 +2578,7 @@ const DynamicMapa = next_dynamic__WEBPACK_IMPORTED_MODULE_2___default()(()=>__we
         ]
     }
 });
-function Home({ markers , menu_list , dataReverseVenta , dataReverse  }) {
+function Home({ markers , menu_list  }) {
     const { ref: myRef , inView , entry  } = (0,react_intersection_observer__WEBPACK_IMPORTED_MODULE_9__.useInView)();
     return /*#__PURE__*/ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.Fragment, {
         children: [
@@ -2581,10 +2608,7 @@ function Home({ markers , menu_list , dataReverseVenta , dataReverse  }) {
                     children: [
                         /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx(_componentes_Breadcrumbs_Breadcrumbs__WEBPACK_IMPORTED_MODULE_3__/* ["default"] */ .Z, {}),
                         /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx(_componentes_Section_1_Section_uno__WEBPACK_IMPORTED_MODULE_4__/* ["default"] */ .Z, {}),
-                        /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx(_componentes_Section_2_SectionDos__WEBPACK_IMPORTED_MODULE_5__/* ["default"] */ .Z, {
-                            dataReverse: dataReverse,
-                            dataReverseVenta: dataReverseVenta
-                        }),
+                        /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx(_componentes_Section_2_SectionDos__WEBPACK_IMPORTED_MODULE_5__/* ["default"] */ .Z, {}),
                         /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx(_componentes_Section_3_SectionTres__WEBPACK_IMPORTED_MODULE_6__/* ["default"] */ .Z, {}),
                         /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx(_componentes_Section_4_SectionCuatro__WEBPACK_IMPORTED_MODULE_7__/* ["default"] */ .Z, {}),
                         /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx("div", {
@@ -2611,23 +2635,11 @@ async function getStaticProps() {
     const markers = await marker.json();
     const menu = await fetch(`https://admin.quickgold.es/wp-json/menus/v1/menus/2`);
     const menu_list = await menu.json();
-    const data = await fetch(`https://quickgold.es/archivos-cache/Fixing${idTienda}.txt`);
-    const datos = await data.json();
-    const dataReverse1 = [
-        ...datos?.result?.Tarifas?.Divisas_Compra
-    ].reverse();
-    const dataReverseVenta1 = [
-        ...datos?.result?.Tarifas?.Divisas_Venta
-    ].reverse();
-    const dataReverse = dataReverse1.filter((currency)=>currency.Name !== "RUB" && currency.Name !== "HRK" && currency.Name !== "DKK");
-    const dataReverseVenta = dataReverseVenta1.filter((currency)=>currency.Name !== "HRK");
     // Pass data to the page via props
     return {
         props: {
             markers,
-            menu_list,
-            dataReverse,
-            dataReverseVenta
+            menu_list
         },
         revalidate: 1
     };

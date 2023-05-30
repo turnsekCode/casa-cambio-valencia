@@ -5,17 +5,25 @@ import PowerInputIcon from "@mui/icons-material/PowerInput";
 import ImportExportIcon from "@mui/icons-material/ImportExport";
 //import { useFetchData } from "../../utilities/DataTiendas";
 
-const Comprar = ({ dataReverse }) => {
+const Comprar = () => {
+  const nombreCiudad = "valencia";
+  const [data, setData] = useState([]);
+  const [loading, setLoading] = useState(null);
   useEffect(() => {
-    // This forces a rerender, so the date is rendered
-    // the second time but not the first
-    dataReverse;
+    fetch(`https://quickgold.es/archivos-cache/Fixing${nombreCiudad}.txt`, {
+      cache: "no-cache",
+    })
+      .then((response) => response.json())
+      .then((response) => {
+        setData(response?.result?.Tarifas?.Divisas_Compra.reverse());
+        setLoading(true);
+      });
   }, []);
   //const { data, loading } = useFetchData();
   //const dataCompras = datos?.result?.Tarifas?.Divisas_Compra;
   //const dataReverse = dataCompras?.reverse();
-  const precioLibra = dataReverse[0]?.Productos[0].Precio / 1000;
-  const precioDolar = dataReverse[1]?.Productos[0].Precio / 1000;
+  const precioLibra = data[0]?.Productos[0].Precio / 1000;
+  const precioDolar = data[1]?.Productos[0].Precio / 1000;
   const [valorMoneda, setValorMoneda] = useState("0");
   const [DataAcronimo, setAcronimo] = useState("");
   //const [DataNombre, setDataNombre] = useState("");
@@ -61,8 +69,8 @@ const Comprar = ({ dataReverse }) => {
               captureHabitual(e);
               setSelect(false);
             }}
-            data-acronimo={dataReverse[1].Productos[0].Acronimo}
-            data-precio={dataReverse[1].Productos[0].Precio}
+            data-acronimo={data[1]?.Productos[0]?.Acronimo}
+            data-precio={data[1]?.Productos[0]?.Precio}
           >
             <div
               className={styles.imgMoneda}
@@ -70,8 +78,8 @@ const Comprar = ({ dataReverse }) => {
                 captureHabitual(e);
                 setSelect(false);
               }}
-              data-acronimo={dataReverse[1].Productos[0].Acronimo}
-              data-precio={dataReverse[1].Productos[0].Precio}
+              data-acronimo={data[1]?.Productos[0]?.Acronimo}
+              data-precio={data[1]?.Productos[0]?.Precio}
             >
               <img
                 src="/banderaUSA.png"
@@ -79,17 +87,17 @@ const Comprar = ({ dataReverse }) => {
                   captureHabitual(e);
                   setSelect(false);
                 }}
-                data-acronimo={dataReverse[1].Productos[0].Acronimo}
-                data-precio={dataReverse[1].Productos[0].Precio}
-                alt={dataReverse[1].Productos[0].Acronimo}
+                data-acronimo={data[1]?.Productos[0]?.Acronimo}
+                data-precio={data[1]?.Productos[0]?.Precio}
+                alt={data[1]?.Productos[0]?.Acronimo}
               />
               <span
                 onClick={(e) => {
                   captureHabitual(e);
                   setSelect(false);
                 }}
-                data-acronimo={dataReverse[1].Productos[0].Acronimo}
-                data-precio={dataReverse[1].Productos[0].Precio}
+                data-acronimo={data[1]?.Productos[0]?.Acronimo}
+                data-precio={data[1]?.Productos[0]?.Precio}
               >
                 USD
               </span>
@@ -100,8 +108,8 @@ const Comprar = ({ dataReverse }) => {
                   captureHabitual(e);
                   setSelect(false);
                 }}
-                data-acronimo={dataReverse[1].Productos[0].Acronimo}
-                data-precio={dataReverse[1].Productos[0].Precio}
+                data-acronimo={data[1]?.Productos[0]?.Acronimo}
+                data-precio={data[1]?.Productos[0]?.Precio}
               >
                 Dólar USA
               </p>
@@ -110,18 +118,18 @@ const Comprar = ({ dataReverse }) => {
                   captureHabitual(e);
                   setSelect(false);
                 }}
-                data-acronimo={dataReverse[1].Productos[0].Acronimo}
-                data-precio={dataReverse[1].Productos[0].Precio}
+                data-acronimo={data[1]?.Productos[0]?.Acronimo}
+                data-precio={data[1]?.Productos[0]?.Precio}
               >
                 <span
                   onClick={(e) => {
                     captureHabitual(e);
                     setSelect(false);
                   }}
-                  data-acronimo={dataReverse[1].Productos[0].Acronimo}
-                  data-precio={dataReverse[1].Productos[0].Precio}
+                  data-acronimo={data[1]?.Productos[0]?.Acronimo}
+                  data-precio={data[1]?.Productos[0]?.Precio}
                 >
-                  {precioDolar.toFixed(4)}
+                  {loading ? precioDolar.toFixed(4) : "Cargando..."}€
                 </span>
               </p>
             </div>
@@ -132,8 +140,8 @@ const Comprar = ({ dataReverse }) => {
               captureHabitual(e);
               setSelect(false);
             }}
-            data-acronimo={dataReverse[0].Productos[0].Acronimo}
-            data-precio={dataReverse[0].Productos[0].Precio}
+            data-acronimo={data[0]?.Productos[0]?.Acronimo}
+            data-precio={data[0]?.Productos[0]?.Precio}
           >
             <div
               className={styles.imgMoneda}
@@ -141,8 +149,8 @@ const Comprar = ({ dataReverse }) => {
                 captureHabitual(e);
                 setSelect(false);
               }}
-              data-acronimo={dataReverse[0].Productos[0].Acronimo}
-              data-precio={dataReverse[0].Productos[0].Precio}
+              data-acronimo={data[0]?.Productos[0]?.Acronimo}
+              data-precio={data[0]?.Productos[0]?.Precio}
             >
               <img
                 src="/banderaGBP.png"
@@ -150,17 +158,17 @@ const Comprar = ({ dataReverse }) => {
                   captureHabitual(e);
                   setSelect(false);
                 }}
-                data-acronimo={dataReverse[0].Productos[0].Acronimo}
-                data-precio={dataReverse[0].Productos[0].Precio}
-                alt={dataReverse[0].Productos[0].Acronimo}
+                data-acronimo={data[0]?.Productos[0]?.Acronimo}
+                data-precio={data[0]?.Productos[0]?.Precio}
+                alt={data[0]?.Productos[0]?.Acronimo}
               />
               <span
                 onClick={(e) => {
                   captureHabitual(e);
                   setSelect(false);
                 }}
-                data-acronimo={dataReverse[0].Productos[0].Acronimo}
-                data-precio={dataReverse[0].Productos[0].Precio}
+                data-acronimo={data[0]?.Productos[0]?.Acronimo}
+                data-precio={data[0]?.Productos[0]?.Precio}
               >
                 GBP
               </span>
@@ -171,8 +179,8 @@ const Comprar = ({ dataReverse }) => {
                   captureHabitual(e);
                   setSelect(false);
                 }}
-                data-acronimo={dataReverse[0].Productos[0].Acronimo}
-                data-precio={dataReverse[0].Productos[0].Precio}
+                data-acronimo={data[0]?.Productos[0]?.Acronimo}
+                data-precio={data[0]?.Productos[0]?.Precio}
               >
                 Libra Esterlina
               </p>
@@ -181,18 +189,18 @@ const Comprar = ({ dataReverse }) => {
                   captureHabitual(e);
                   setSelect(false);
                 }}
-                data-acronimo={dataReverse[0].Productos[0].Acronimo}
-                data-precio={dataReverse[0].Productos[0].Precio}
+                data-acronimo={data[0]?.Productos[0]?.Acronimo}
+                data-precio={data[0]?.Productos[0]?.Precio}
               >
                 <span
                   onClick={(e) => {
                     captureHabitual(e);
                     setSelect(false);
                   }}
-                  data-acronimo={dataReverse[0].Productos[0].Acronimo}
-                  data-precio={dataReverse[0].Productos[0].Precio}
+                  data-acronimo={data[0]?.Productos[0]?.Acronimo}
+                  data-precio={data[0]?.Productos[0]?.Precio}
                 >
-                  {precioLibra.toFixed(4)}
+                  {loading ? precioLibra.toFixed(4) : "Cargando..."}€
                 </span>
               </p>
             </div>
@@ -224,42 +232,50 @@ const Comprar = ({ dataReverse }) => {
                   : `${styles.select_monedas}`
               }
             >
-              {dataReverse?.map((data, i) => (
-                <div
-                  key={i}
-                  className={styles.contenedor_list}
-                  data-acronimo={data?.Productos[0].Acronimo}
-                  data-precio={data?.Productos[0].Precio}
-                  onClick={(e) => {
-                    captureCodigo(e);
-                    MonedaSeleccionada();
-                  }}
-                >
-                  <div className={styles.bandera}>
-                    <img
-                      src={`/${data?.Productos[0].Acronimo}.png`}
-                      data-acronimo={data?.Productos[0].Acronimo}
-                      data-precio={data?.Productos[0].Precio}
-                      alt={data?.Productos[0].Acronimo}
-                    />
+              {data
+                ?.filter(
+                  (currency) =>
+                    currency.Name !== "HRK" &&
+                    currency.Name !== "DKK" &&
+                    currency.Name !== "RUB" &&
+                    currency.Name !== "NOK"
+                )
+                .map((data, i) => (
+                  <div
+                    key={i}
+                    className={styles.contenedor_list}
+                    data-acronimo={data?.Productos[0].Acronimo}
+                    data-precio={data?.Productos[0].Precio}
+                    onClick={(e) => {
+                      captureCodigo(e);
+                      MonedaSeleccionada();
+                    }}
+                  >
+                    <div className={styles.bandera}>
+                      <img
+                        src={`/${data?.Productos[0].Acronimo}.png`}
+                        data-acronimo={data?.Productos[0].Acronimo}
+                        data-precio={data?.Productos[0].Precio}
+                        alt={data?.Productos[0].Acronimo}
+                      />
+                    </div>
+                    <div className={styles.moneda}>
+                      <p
+                        data-acronimo={data?.Productos[0].Acronimo}
+                        data-precio={data?.Productos[0].Precio}
+                      >
+                        {data?.Productos[0].Acronimo}
+                      </p>
+                      <span
+                        className={styles.nombre}
+                        data-acronimo={data?.Productos[0].Acronimo}
+                        data-precio={data?.Productos[0].Precio}
+                      >
+                        {data?.Productos[0].Nombre}
+                      </span>
+                    </div>
                   </div>
-                  <div className={styles.moneda}>
-                    <p
-                      data-acronimo={data?.Productos[0].Acronimo}
-                      data-precio={data?.Productos[0].Precio}
-                    >
-                      {data?.Productos[0].Acronimo}
-                    </p>
-                    <span
-                      className={styles.nombre}
-                      data-acronimo={data?.Productos[0].Acronimo}
-                      data-precio={data?.Productos[0].Precio}
-                    >
-                      {data?.Productos[0].Nombre}
-                    </span>
-                  </div>
-                </div>
-              ))}
+                ))}
             </div>
           </div>
         </div>
