@@ -57,9 +57,9 @@ __webpack_require__.r(__webpack_exports__);
 );*/ const Mapa = ({ markers  })=>{
     const marcador = markers.arrayMarker;
     const [viewState, setViewState] = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)({
-        longitude: -0.3793897,
-        latitude: 39.470953,
-        zoom: 11,
+        longitude: markers?.markerInicial[0].longitude,
+        latitude: markers?.markerInicial[0].latitude,
+        zoom: markers?.markerInicial[0].zoom,
         cooperativeGestures: true
     });
     const mapRef = (0,react__WEBPACK_IMPORTED_MODULE_1__.useRef)();
@@ -67,11 +67,11 @@ __webpack_require__.r(__webpack_exports__);
         setShowPopup(false);
         mapRef.current?.flyTo({
             center: [
-                -0.3793897,
-                39.470953
+                markers.markerInicial[0].longitude,
+                markers.markerInicial[0].latitude
             ],
             duration: 2000,
-            zoom: 11
+            zoom: markers?.markerInicial[0].zoom
         });
     };
     const [showPopup, setShowPopup] = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(null);
@@ -157,7 +157,7 @@ __webpack_require__.r(__webpack_exports__);
                                             toggleTab();
                                             onSelectMarker(marker);
                                         },
-                                        to: "contenedorMapa",
+                                        to: "contenedorMapa2",
                                         smooth: true,
                                         offset: -110,
                                         spy: true,
@@ -179,7 +179,11 @@ __webpack_require__.r(__webpack_exports__);
                                                 ]
                                             }),
                                             /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx(react_scroll__WEBPACK_IMPORTED_MODULE_2__.Link, {
-                                                to: "contenedorMapa",
+                                                onClick: ()=>{
+                                                    toggleTab();
+                                                    onSelectMarker(marker);
+                                                },
+                                                to: "contenedorMapa2",
                                                 smooth: true,
                                                 offset: -110,
                                                 spy: true,
@@ -196,7 +200,7 @@ __webpack_require__.r(__webpack_exports__);
             }),
             /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx("div", {
                 className: (_mapa_module_css__WEBPACK_IMPORTED_MODULE_4___default().bloqueDer),
-                id: "contenedorMapa",
+                id: "contenedorMapa2",
                 children: /*#__PURE__*/ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)((react_map_gl__WEBPACK_IMPORTED_MODULE_3___default()), {
                     onStyleLoad: true,
                     ref: mapRef,
@@ -260,7 +264,6 @@ __webpack_require__.r(__webpack_exports__);
                                                 title: "C\xf3mo llegar",
                                                 href: showInfo.comoLlegar,
                                                 rel: "noreferrer",
-                                                ƒ: true,
                                                 className: (_mapa_module_css__WEBPACK_IMPORTED_MODULE_4___default().boton_como_llegar),
                                                 children: "C\xf3mo llegar"
                                             }),

@@ -1,5 +1,5 @@
 .contenedorFooter{
-    background: #213E58;
+    background: #0F2D45;
     height: 455px;
 }
 .contenedorContenidoFooter{
@@ -107,7 +107,7 @@
 
 @media (min-width: 1191px) {
     .contenedorFooter {
-        background: #213E58;
+        background: #0F2D45;
         height: 455px;
     }
 

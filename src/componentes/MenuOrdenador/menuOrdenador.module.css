@@ -14,7 +14,7 @@
     .headersticky {
         position: fixed;
         top: 0;
-        background: #0692D0;
+        background: #0A6A94;
         width: 100%;
     }
 
@@ -40,7 +40,7 @@
     }
 
     .contenedorMenuSticky ul li:hover {
-        background: #0A6A94;
+        background: #0b5777;
         border-radius: 2px;
     }
 
@@ -76,7 +76,7 @@
     }
 
     .contenedorMenu ul li:hover {
-        background: #0A6A94;
+        background: #0b5777;
         border-radius: 2px;
     }
 
@@ -97,7 +97,7 @@
         position: absolute;
         top: 50px;
         left: -611px;
-        background: #213E58;
+        background: #0F2D45;
         height: 0;
         overflow-x: hidden;
         transition: 0.08s;
@@ -154,7 +154,7 @@
         position: absolute;
         top: 50px;
         left: -30px;
-        background: #213E58;
+        background: #0F2D45;
         height: 0;
         overflow: hidden;
         transition: 0.1s;
