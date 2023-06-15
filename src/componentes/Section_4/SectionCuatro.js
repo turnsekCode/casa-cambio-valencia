@@ -11,16 +11,15 @@ const SectionCuatro = () => {
           <span className={styles.linea}>Valencia</span>
         </h2>
         <p>
-          En las oficinas de cambio de divisa quickgold en Valencia puedes
-          cambiar dólares a euros en tan solo unos minutos. Recuerda llevar el
-          dinero que necesitas cambiar y, al instante, recibirás la moneda
-          extranjera que necesites en efectivo. Además, ofrecemos mejoras en la
-          tasa de cambio por cantidad, por lo tanto siempre estamos dispuesto a
-          escuchar tus necesidades para ofrecerte el mejor tipo de cambio de la
-          ciudad de Valencia. Olvídate de cambiar divisa en el aeropuerto o en
-          el banco, en quickgold ofrecemos las mejores condiciones y ponemos a
-          tu disposición diferentes casas de cambio para estar siempre cerca de
-          ti.
+          En nuestro money exchange en Valencia puedes cambiar dólares a euros
+          en tan solo unos minutos. Recuerda llevar el dinero que necesitas
+          cambiar y, al instante, recibirás la moneda extranjera que necesites
+          en efectivo. Además, ofrecemos mejoras en la tasa de cambio por
+          cantidad, por lo tanto siempre estamos dispuesto a escuchar tus
+          necesidades para ofrecerte el mejor tipo de cambio de la ciudad de
+          Valencia. Olvídate de cambiar divisa en el aeropuerto o en el banco,
+          en quickgold ofrecemos las mejores condiciones y ponemos a tu
+          disposición diferentes casas de cambio para estar siempre cerca de ti.
         </p>
       </div>
       <div className={styles.bloqueDer}>
